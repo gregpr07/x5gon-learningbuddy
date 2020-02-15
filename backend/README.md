@@ -1,6 +1,6 @@
 ## Installation guide
 
-Create .env file (in `/backend` directory) with the following:
+Create **.env** file (in this directory) with the following:
 
 ```
 SECRET_KEY = <key>
