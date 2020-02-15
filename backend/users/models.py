@@ -5,7 +5,7 @@ from django.db.models.signals import post_save
 
 
 class Profile(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
     description = models.TextField(
         max_length=300, default="Another cool user.")
     date_created = models.DateTimeField(default=timezone.now, blank=True)
@@ -16,7 +16,7 @@ class Profile(models.Model):
 
 
 class ProfileStatistics(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
 
     # * engagement
     # to nerabmo, ker lahko use dobis direkt iz databaze - quiz
@@ -42,6 +42,9 @@ class ProfileStatistics(models.Model):
 
     def __str__(self):
         return self.user.username + "'s statistics"
+
+    def stats(self):
+        return {'read': self.documents_read}
 
 
 # generate profiles automatically
