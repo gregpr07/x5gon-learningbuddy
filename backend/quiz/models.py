@@ -2,29 +2,48 @@ from django.contrib.auth.models import User
 from django.db import models
 
 
-class DocumentStatistics(models.Model):
-    title = models.CharField(default="undefined", blank=True, max_length=255)
-    document_id = models.IntegerField(unique=True)
-    rating = models.FloatField(default=5)
-    raters = models.ManyToManyField(User)
+class ResourceStatistics(models.Model):
+    resource_id = models.IntegerField(unique=True)
+    upvoters = models.ManyToManyField(User, related_name='upvoters')
+    downvoters = models.ManyToManyField(User, related_name='downvoters')
     views = models.IntegerField(default=0)
 
-    def __str__(self):
-        return str(self.document_id) + "'s statistics"
+    class Meta:
+        verbose_name_plural = "Resource statistics"
 
     def increase_views(self):
         self.views = self.views + 1
         self.save()
 
+    def has_rated(self, user):
+        return user in self.upvoters or user in self.downvoters
+
+    def upvote(self, user):
+        self.upvoters.add(user)
+        self.save()
+
+    def downvote(self, user):
+        self.downvoters.add(user)
+        self.save()
+
+    def __str__(self):
+        return str(self.resource_id) + "'s statistics"
+
 
 class Quiz(models.Model):
-    document_id = models.IntegerField(unique=True)
+    resource_id = models.IntegerField(unique=True)
+
+    class Meta:
+        verbose_name_plural = "Quizzes"
 
     def get_quiz_questions(self):
         return QuizQuestion.objects.filter(quiz=self)
 
     def get_quiz_question(self, index):
         return QuizQuestion.objects.filter(quiz=self)[index]
+
+    def __str__(self):
+        return str(self.resource_id) + "'s quiz"
 
 
 class QuizQuestion(models.Model):
@@ -35,10 +54,19 @@ class QuizQuestion(models.Model):
     def get_quiz_answers(self):
         return QuizAnswer.objects.filter(question=self)
 
+    def get_quiz_correct_answer(self):
+        return self.get_quiz_answers()[self.correct]
+
+    def __str__(self):
+        return str(self.quiz.resource_id) + " > " + self.text
+
 
 class QuizAnswer(models.Model):
     question = models.ForeignKey(QuizQuestion, on_delete=models.CASCADE)
     text = models.CharField(max_length=255)
+
+    def __str__(self):
+        return self.question.__str__() + " > " + self.text
 
 
 class QuizUserResult(models.Model):
@@ -55,7 +83,7 @@ class QuizUserResult(models.Model):
     def get_wrong_percentage(self):
         return (self.wrong * 100) / (self.correct + self.wrong)
 
-    def determine_grade(self):
+    def get_grade(self):
         correct_percentage = self.get_correct_percentage()
         if correct_percentage >= 90:
             return 'A'
@@ -68,6 +96,9 @@ class QuizUserResult(models.Model):
         if correct_percentage >= 50:
             return 'E'
         return 'F'
+
+    def __str__(self):
+        return self.quiz.__str__() + " > " + self.user.username
 
 # * IDEA
 # quizUserEngagement - comments, likes nad such
