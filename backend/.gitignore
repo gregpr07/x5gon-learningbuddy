@@ -5,6 +5,10 @@ __pycache__/
 
 .DS_Store
 
+# PyCharm / IntelliJ
+**/.idea
+*.iml
+
 # C extensions
 *.so
 
