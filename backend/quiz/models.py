@@ -4,7 +4,6 @@ from django.db import models
 
 class DocumentStatistics(models.Model):
     title = models.CharField(default="undefined", blank=True, max_length=255)
-    document_id = models.IntegerField(unique=True)
     rating = models.FloatField(default=5)
     raters = models.ManyToManyField(User)
     views = models.IntegerField(default=0)
@@ -18,7 +17,7 @@ class DocumentStatistics(models.Model):
 
 
 class Quiz(models.Model):
-    document_id = models.IntegerField(unique=True)
+    stats = models.OneToOneField(DocumentStatistics, on_delete=models.CASCADE)
 
     def get_quiz_questions(self):
         return QuizQuestion.objects.filter(quiz=self)
