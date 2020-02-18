@@ -20,7 +20,7 @@ class QuizInfo(APIView):
 
         return Response({
             'id': quiz.pk,
-            'resource_id': quiz.resource_id,
+            'material_id': quiz.material_id,
             'questions': [
                 {
                     'question': question.text,
@@ -44,7 +44,7 @@ class QuizStatistics(APIView):
 
         return Response({
             'id': statistics.id,
-            'resource_id': quiz.resource_id,
+            'material_id': quiz.material_id,
             'statistics':
                 {
                     'upvotes': statistics.upvoters.count(),
@@ -73,7 +73,7 @@ class QuizResult(APIView):
         results = QuizUserResult.objects.filter(quiz_id=quiz_id).filter(user_id=user_id).order_by("-date")
 
         return Response({
-            'resource_id': quiz.resource_id,
+            'material_id': quiz.material_id,
             'results': [
                 [
                     {
@@ -81,6 +81,7 @@ class QuizResult(APIView):
                         'date': result.date,
                         'correct': result.correct,
                         'wrong': result.wrong,
+                        'grade': result.get_grade(),
                         'data': result.data
                     } for result in results
                 ]
@@ -102,6 +103,7 @@ class QuizLeaderboard(APIView):
                     'date': result.date,
                     'correct': result.correct,
                     'wrong': result.wrong,
+                    'grade': result.get_grade(),
                     'data': result.data
                 } for result in results
             ],

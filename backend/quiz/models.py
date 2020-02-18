@@ -27,7 +27,8 @@ class QuizStatistics(models.Model):
 
 
 class Quiz(models.Model):
-    resource_id = models.IntegerField(unique=True)
+    # this material_id = x5gon's material_id
+    material_id = models.IntegerField(unique=True)
     stats = models.OneToOneField(QuizStatistics, on_delete=models.CASCADE)
 
     class Meta:
@@ -40,7 +41,7 @@ class Quiz(models.Model):
         return QuizQuestion.objects.filter(quiz=self)[index]
 
     def __str__(self):
-        return str(self.resource_id) + "'s quiz"
+        return str(self.material_id) + "'s quiz"
 
 
 class QuizQuestion(models.Model):
@@ -55,7 +56,7 @@ class QuizQuestion(models.Model):
         return self.get_quiz_answers()[self.correct]
 
     def __str__(self):
-        return str(self.quiz.resource_id) + " > " + self.text
+        return str(self.quiz.material_id) + " > " + self.text
 
 
 class QuizAnswer(models.Model):
