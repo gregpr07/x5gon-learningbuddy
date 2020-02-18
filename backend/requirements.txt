@@ -10,4 +10,5 @@ python-dotenv==0.11.0
 pytz==2019.3
 six==1.14.0
 sqlparse==0.3.0
+trueskill==0.4.5
 whitenoise==5.0.1
