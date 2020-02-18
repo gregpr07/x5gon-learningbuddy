@@ -19,7 +19,7 @@ class QuizInfo(APIView):
         quiz = Quiz.objects.get(id=quiz_id)
 
         return Response({
-            'id': quiz.pk,
+            'quiz_id': quiz.pk,
             'material_id': quiz.material_id,
             'questions': [
                 {
@@ -43,7 +43,7 @@ class QuizStatistics(APIView):
         statistics = quiz.stats
 
         return Response({
-            'id': statistics.id,
+            'quiz_id': quiz.id,
             'material_id': quiz.material_id,
             'statistics':
                 {
@@ -73,6 +73,7 @@ class QuizResult(APIView):
         results = QuizUserResult.objects.filter(quiz_id=quiz_id).filter(user_id=user_id).order_by("-date")
 
         return Response({
+            'quiz_id': quiz.id,
             'material_id': quiz.material_id,
             'results': [
                 [
@@ -94,9 +95,16 @@ class QuizLeaderboard(APIView):
     leaderboard_limit = 10
 
     def get(self, request, quiz_id):
+        if not Quiz.objects.filter(id=quiz_id).exists():
+            raise NotFound(detail="Requested Quiz not found.", code=404)
+
+        # Quiz & User exist, let's return the data.
+        quiz = Quiz.objects.get(id=quiz_id)
         results = QuizUserResult.objects.filter(quiz_id=quiz_id).order_by('-correct')[:self.leaderboard_limit]
+
         return Response({
-            'quiz_id': quiz_id,
+            'quiz_id': quiz.id,
+            'material_id': quiz.material_id,
             'leaderboard': [
                 {
                     'id': result.id,
