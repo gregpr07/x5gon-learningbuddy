@@ -1,4 +1,5 @@
 # not all imports are neccessary yet
+from rest_framework.exceptions import NotFound
 from rest_framework.views import APIView
 from rest_framework import generics
 from rest_framework.response import Response
@@ -11,7 +12,12 @@ from .models import *
 
 class QuizInfo(APIView):
     def get(self, request, quiz_id):
+        if not Quiz.objects.filter(id=quiz_id).exists():
+            raise NotFound(detail="Requested Quiz not found.", code=404)
+
+        # Quiz exists, let's return the data.
         quiz = Quiz.objects.get(id=quiz_id)
+
         return Response({
             'id': quiz.pk,
             'resource_id': quiz.resource_id,
@@ -29,12 +35,38 @@ class QuizInfo(APIView):
 
 class QuizStatistics(APIView):
     def get(self, request, quiz_id):
-        return Response({})
+        if not Quiz.objects.filter(id=quiz_id).exists():
+            raise NotFound(detail="Requested Quiz not found.", code=404)
+
+        # Quiz exists, let's return the data.
+        quiz = Quiz.objects.get(id=quiz_id)
+        statistics = quiz.stats
+        return Response({
+            'id': statistics.id,
+            'resource_id': quiz.resource_id,
+            'statistics':
+                {
+                    'upvotes': statistics.upvoters.count(),
+                    'downvotes': statistics.downvoters.count(),
+                    'views': statistics.views,
+                    'upvoters': [
+                        user.id for user in statistics.upvoters.all()
+                    ],
+                    'downvoters': [
+                        user.id for user in statistics.downvoters.all()
+                    ]
+                }
+        })
 
 
-class QuizUserResult(APIView):
-    def get(self, request, quiz_id):
-        return Response({})
+class QuizResult(APIView):
+    def get(self, request, quiz_id, user_id):
+        result = QuizUserResult.objects.filter(quiz_id=quiz_id).filter(user_id=user_id)
+        return Response({
+            'result': {
+                result.correct
+            }
+        })
 
 
 class QuizLeaderboard(APIView):
