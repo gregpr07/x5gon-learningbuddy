@@ -79,6 +79,7 @@ class QuizResult(APIView):
                 [
                     {
                         'id': result.id,
+                        'user': result.user.id,
                         'date': result.date,
                         'correct': result.correct,
                         'wrong': result.wrong,
@@ -108,6 +109,7 @@ class QuizLeaderboard(APIView):
             'leaderboard': [
                 {
                     'id': result.id,
+                    'user': result.user.id,
                     'date': result.date,
                     'correct': result.correct,
                     'wrong': result.wrong,
