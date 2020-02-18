@@ -61,11 +61,21 @@ class QuizStatistics(APIView):
 
 class QuizResult(APIView):
     def get(self, request, quiz_id, user_id):
-        result = QuizUserResult.objects.filter(quiz_id=quiz_id).filter(user_id=user_id)
+        quiz = Quiz.objects.get(id=quiz_id)
+        results = QuizUserResult.objects.filter(quiz_id=quiz_id).filter(user_id=user_id).order_by("-date")
         return Response({
-            'result': {
-                result.correct
-            }
+            'resource_id': quiz.resource_id,
+            'results': [
+                [
+                    {
+                        'id': result.id,
+                        'date': result.date,
+                        'correct': result.correct,
+                        'wrong': result.wrong,
+                        'data': result.data
+                    } for result in results
+                ]
+            ]
         })
 
 
