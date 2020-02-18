@@ -2,34 +2,6 @@ from django.contrib.auth.models import User
 from django.db import models
 
 
-class ResourceStatistics(models.Model):
-    resource_id = models.IntegerField(unique=True)
-    upvoters = models.ManyToManyField(User, related_name='upvoters')
-    downvoters = models.ManyToManyField(User, related_name='downvoters')
-    views = models.IntegerField(default=0)
-
-    class Meta:
-        verbose_name_plural = "Resource statistics"
-
-    def increase_views(self):
-        self.views = self.views + 1
-        self.save()
-
-    def has_rated(self, user):
-        return user in self.upvoters or user in self.downvoters
-
-    def upvote(self, user):
-        self.upvoters.add(user)
-        self.save()
-
-    def downvote(self, user):
-        self.downvoters.add(user)
-        self.save()
-
-    def __str__(self):
-        return str(self.resource_id) + "'s statistics"
-
-
 class Quiz(models.Model):
     resource_id = models.IntegerField(unique=True)
 
@@ -100,5 +72,31 @@ class QuizUserResult(models.Model):
     def __str__(self):
         return self.quiz.__str__() + " > " + self.user.username
 
-# * IDEA
-# quizUserEngagement - comments, likes nad such
+
+class QuizStatistics(models.Model):
+    resource_id = models.IntegerField(unique=True)
+    upvoters = models.ManyToManyField(User, related_name='upvoters')
+    downvoters = models.ManyToManyField(User, related_name='downvoters')
+    views = models.IntegerField(default=0)
+
+    class Meta:
+        verbose_name_plural = "Resource statistics"
+
+    def increase_views(self):
+        self.views = self.views + 1
+        self.save()
+
+    def has_rated(self, user):
+        return user in self.upvoters or user in self.downvoters
+
+    def upvote(self, user):
+        self.upvoters.add(user)
+        self.save()
+
+    def downvote(self, user):
+        self.downvoters.add(user)
+        self.save()
+
+    def __str__(self):
+        return str(self.resource_id) + "'s statistics"
+
