@@ -1,7 +1,8 @@
-from users import views
 from django.urls import path
 
+from . import views
+
 urlpatterns = [
-    path('test/', views.test.as_view()),
-    path('<str:user>/', views.userinfo.as_view())
+    path('', views.Users.as_view()),
+    path('<str:username>/', views.UserInfo.as_view()),
 ]

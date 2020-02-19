@@ -61,6 +61,9 @@ class QuizStatistics(APIView):
 
 
 class QuizResult(APIView):
+    # ta stevlika predstavlja koliko zadnjih rezultatov uporabnika vrne
+    RESULT_LIMIT = 10
+
     def get(self, request, quiz_id, user_id):
         if not Quiz.objects.filter(id=quiz_id).exists():
             raise NotFound(detail="Requested Quiz not found.", code=404)
@@ -70,7 +73,7 @@ class QuizResult(APIView):
 
         # Quiz & User exist, let's return the data.
         quiz = Quiz.objects.get(id=quiz_id)
-        results = QuizUserResult.objects.filter(quiz_id=quiz_id).filter(user_id=user_id).order_by("-date")
+        results = QuizUserResult.objects.filter(quiz_id=quiz_id).filter(user_id=user_id).order_by("-date")[:self.RESULT_LIMIT]
 
         return Response({
             'quiz_id': quiz.id,
@@ -93,7 +96,7 @@ class QuizResult(APIView):
 
 class QuizLeaderboard(APIView):
     # ta stevlika predstavlja koliko najboljsih uporabnikov vrne
-    leaderboard_limit = 10
+    LEADERBOARD_LIMIT = 10
 
     def get(self, request, quiz_id):
         if not Quiz.objects.filter(id=quiz_id).exists():
@@ -101,7 +104,7 @@ class QuizLeaderboard(APIView):
 
         # Quiz & User exist, let's return the data.
         quiz = Quiz.objects.get(id=quiz_id)
-        results = QuizUserResult.objects.filter(quiz_id=quiz_id).order_by('-correct')[:self.leaderboard_limit]
+        results = QuizUserResult.objects.filter(quiz_id=quiz_id).order_by('-correct')[:self.LEADERBOARD_LIMIT]
 
         return Response({
             'quiz_id': quiz.id,
