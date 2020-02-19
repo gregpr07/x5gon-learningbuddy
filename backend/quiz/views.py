@@ -45,16 +45,22 @@ class QuizStatistics(APIView):
         return Response({
             'quiz_id': quiz.id,
             'material_id': quiz.material_id,
-            'statistics':
+            'stats':
                 {
                     'upvotes': statistics.upvoters.count(),
                     'downvotes': statistics.downvoters.count(),
                     'views': statistics.views,
                     'upvoters': [
-                        user.id for user in statistics.upvoters.all()
+                        {
+                            'id': user.id,
+                            'username': user.username,
+                        } for user in statistics.upvoters.all()
                     ],
                     'downvoters': [
-                        user.id for user in statistics.downvoters.all()
+                        {
+                            'id': user.id,
+                            'username': user.username,
+                        } for user in statistics.downvoters.all()
                     ]
                 }
         })
@@ -81,8 +87,8 @@ class QuizResult(APIView):
             'results': [
                 [
                     {
-                        'id': result.id,
-                        'user': result.user.id,
+                        'user_id': result.user.id,
+                        'username': result.user.username,
                         'date': result.date,
                         'correct': result.correct,
                         'wrong': result.wrong,
@@ -111,8 +117,8 @@ class QuizLeaderboard(APIView):
             'material_id': quiz.material_id,
             'leaderboard': [
                 {
-                    'id': result.id,
-                    'user': result.user.id,
+                    'user_id': result.user.id,
+                    'username': result.user.username,
                     'date': result.date,
                     'correct': result.correct,
                     'wrong': result.wrong,

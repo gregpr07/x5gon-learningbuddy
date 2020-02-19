@@ -9,7 +9,7 @@ class Profile(models.Model):
     description = models.TextField(
         max_length=300, default="Another cool user.")
     # to je unnecessary ker tak User model hold-a creation date
-    date_created = models.DateTimeField(default=timezone.now, blank=True)
+    # date_created = models.DateTimeField(default=timezone.now, blank=True)
 
     def __str__(self):
         return self.user.username + "'s profile"
@@ -20,10 +20,10 @@ class ProfileStatistics(models.Model):
 
     # * engagement
     # to nerabmo, ker lahko use dobis direkt iz databaze - quiz
-    documents_read = models.IntegerField(default=0)
-    documents_rated = models.IntegerField(default=0)
-    quizzes_played = models.IntegerField(default=0)
-    points = models.IntegerField(default=0)
+    # documents_read = models.IntegerField(default=0)
+    # documents_rated = models.IntegerField(default=0)
+    # quizzes_played = models.IntegerField(default=0)
+    # points = models.IntegerField(default=0)
 
     # * statistics
     rating = models.FloatField(default=0)
