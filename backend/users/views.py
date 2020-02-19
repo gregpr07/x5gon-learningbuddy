@@ -59,3 +59,20 @@ class UserInfo(APIView):
                         'rating': user_statistics.rating,
                     }
             })
+
+class UserLeaderboard(APIView):
+    # ta stevlika predstavlja koliko najboljsih uporabnikov vrne
+    LEADERBOARD_LIMIT = 10
+
+    def get(self, request):
+        stats = ProfileStatistics.objects.all().order_by("-rating")[:self.LEADERBOARD_LIMIT]
+
+        return Response({
+            'users': [
+                {
+                    'id': stat.user.id,
+                    'username': stat.user.username,
+                    'rating': ProfileStatistics.objects.get(user=stat.user).rating,
+                } for stat in stats
+            ]
+        })
