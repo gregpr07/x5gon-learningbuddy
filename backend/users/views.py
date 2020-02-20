@@ -44,12 +44,12 @@ class UserInfo(APIView):
                 quizzes_rated += 1
 
         return Response({
-                'id': user.id,
-                'username': user.username,
-                'profile':
-                    {
+            'id': user.id,
+            'username': user.username,
+            'profile':
+            {
                         'description': profile.description,
-                    },
+                        },
                 'stats':
                     {
                         # TODO: nimamo se model-a ki bi keep-al resource-e ki jih uporabnik prebere, je to sploh pomembno?
@@ -57,15 +57,17 @@ class UserInfo(APIView):
                         'quizzes_played': QuizUserResult.objects.filter(user=user).count(),
                         'quizzes_rated': quizzes_rated,
                         'rating': user_statistics.rating,
-                    }
-            })
+            }
+        })
+
 
 class UserLeaderboard(APIView):
     # ta stevlika predstavlja koliko najboljsih uporabnikov vrne
     LEADERBOARD_LIMIT = 10
 
     def get(self, request):
-        stats = ProfileStatistics.objects.all().order_by("-rating")[:self.LEADERBOARD_LIMIT]
+        stats = ProfileStatistics.objects.all().order_by(
+            "-rating")[:self.LEADERBOARD_LIMIT]
 
         return Response({
             'users': [
