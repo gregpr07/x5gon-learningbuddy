@@ -5,7 +5,7 @@ import numpy as np
 import json
 import requests
 
-def return_topic_dificulty(material_id):
+def return_topic_dificulty(material_id, n_topics = 10):
     headers = {
     'accept': 'application/json',
     'Content-Type': 'application/json',
@@ -16,7 +16,9 @@ def return_topic_dificulty(material_id):
     response = requests.post('http://wp3dev.x5gon.org/distance/wikifier/fetch', headers=headers, data=data)
     concepts = json.loads(response.content.decode())['output'][0]['value']['concepts']
     concepts_dificulties = {i['title']:i['cosine'] for i in concepts}
-    return concepts_dificulties
+    
+    
+    return {k: v for k, v in sorted(concepts_dificulties.items(), key=lambda item: item[1])[::-1][:n_topics]}
 
 class TrueBuddy_learner:
     def __init__(self, starting_skill = 0, starting_var = (25/3), BETA = 25/6, inf = 1/1000):
