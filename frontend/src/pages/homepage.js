@@ -1,17 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 
 import { Layout } from "../components/layout";
-import { Navbar } from "../components/components";
-
-const curated = () => {
-  fetch("/users/all/").then(res => console.log(res));
-};
 
 const Homepage = props => {
-  curated();
+  const [users, setUsers] = useState();
+  const curated = () => {
+    fetch("/users/all/")
+      .then(res => res.json())
+      .then(json => setUsers(json.users));
+  };
   return (
     <Layout>
-      <Navbar />
       <div className="jumbotron bg-dark">
         <h1 className="display-3">Hello, world!</h1>
         <p className="lead">
@@ -24,7 +23,11 @@ const Homepage = props => {
           out within the larger container.
         </p>
         <div className="lead">
-          <div className="btn btn-primary btn-lg" role="button">
+          <div
+            className="btn btn-primary btn-lg"
+            onClick={curated}
+            role="button"
+          >
             Learn more
           </div>
         </div>
