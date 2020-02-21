@@ -5,11 +5,11 @@ import { NavLink, Link } from "react-router-dom";
 export const Navbar = props => {
   const [authTokens, setAuthTokens] = useState(localStorage.getItem("user"));
 
-  const pages = ["Home", "Features", "Pricing", "About"];
-  const links = ["/", "/features", "/pricing", "/about"];
+  const pages = ["Home", "Search", "Playlists", "Social", "My profile"];
+  const links = ["/", "/search", "/playlists", "/social", "/profile"];
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
-      <div className="navbar-brand">Learn Buddy</div>
+      <div className="navbar-brand">X5Buddy</div>
       <button
         className="navbar-toggler"
         type="button"

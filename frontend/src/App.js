@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Homepage from "./pages/homepage";
 import Login from "./pages/login";
 import Logout from "./pages/logout";
+import Profile from "./pages/profile";
 import { Navbar } from "./components/components";
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
         <Route path="/" exact component={Homepage} />
         <Route path="/login" exact component={Login} />
         <Route exact path="/logout" component={Logout} />
+        <Route exact path="/profile" component={Profile} />
         <Route>
           <div className="container">page not found</div>
         </Route>
