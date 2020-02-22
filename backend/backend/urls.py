@@ -6,4 +6,6 @@ urlpatterns = [
     path('users/', include('users.urls')),
     path('quiz/', include('quiz.urls')),
     re_path(r'^rest-auth/', include('rest_auth.urls')),
+    re_path(r'^rest-auth/registration/',
+            include('rest_auth.registration.urls'))
 ]

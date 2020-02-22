@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { NavLink, Link } from "react-router-dom";
-//import logo from '../images/logo/x5gon_logo_dark.svg';
+import logo from "../images/x5buddy.png";
 
 export const Navbar = props => {
   const [authTokens, setAuthTokens] = useState(localStorage.getItem("user"));
@@ -9,7 +9,9 @@ export const Navbar = props => {
   const links = ["/", "/search", "/playlists", "/social", "/profile"];
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
-      <div className="navbar-brand">X5Buddy</div>
+      <div className="navbar-brand">
+        <img src={logo} height="30" alt="logo" />
+      </div>
       <button
         className="navbar-toggler"
         type="button"
