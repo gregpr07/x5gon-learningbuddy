@@ -90,5 +90,9 @@ class TrueBuddy_learner:
         win_proba = self.predict_proba(material_id)
         
         return(1 if win_proba >= 0.5 else 0)
-        
+
+
+if __name__ == '__main__':
+    #basic unit tests
+    print('TODO')
         
