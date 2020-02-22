@@ -5,6 +5,14 @@ import { Layout } from "../components/layout";
 import { requestHeader } from "../components/functions";
 
 const Signup = props => {
+  const setTokens = data => {
+    if (data) {
+      localStorage.setItem("user", data);
+    } else {
+      localStorage.removeItem("user");
+    }
+    window.location.href = "/";
+  };
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
   const [password1, setPassword1] = useState("");
@@ -31,6 +39,7 @@ const Signup = props => {
         if (res.status === 201) {
           setIsError(false);
           setSucessfully(true);
+          setTokens();
         } else {
           setIsError(true);
           setSucessfully(false);
@@ -38,6 +47,9 @@ const Signup = props => {
         return res.json();
       })
       .then(json => {
+        if (json.key) {
+          setTokens(json.key);
+        }
         console.log(json);
       });
   };

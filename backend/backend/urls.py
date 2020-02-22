@@ -9,3 +9,6 @@ urlpatterns = [
     re_path(r'^rest-auth/registration/',
             include('rest_auth.registration.urls'))
 ]
+
+# todo
+# user cant be deleted
