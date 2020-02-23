@@ -1,13 +1,17 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
-//import logo from '../images/logo/x5gon_logo_dark.svg';
+import { NavLink, Link } from "react-router-dom";
+import logo from "../images/x5buddy.png";
 
 export const Navbar = props => {
+  const [authTokens, setAuthTokens] = useState(localStorage.getItem("user"));
+
+  const pages = ["Home", "Search", "Playlists", "Social", "My profile"];
+  const links = ["/", "/search", "/playlists", "/social", "/profile"];
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
-      <a className="navbar-brand" href="#">
-        Learn Buddy
-      </a>
+      <div className="navbar-brand">
+        <img src={logo} height="30" alt="logo" />
+      </div>
       <button
         className="navbar-toggler"
         type="button"
@@ -21,26 +25,33 @@ export const Navbar = props => {
       </button>
       <div className="collapse navbar-collapse" id="navbarColor01">
         <ul className="navbar-nav mr-auto">
-          <li className="nav-item">
-            <a className="nav-link active" href="#">
-              Home <span className="sr-only">(current)</span>
-            </a>
-          </li>
-          <li className="nav-item">
-            <a className="nav-link" href="#">
-              Features
-            </a>
-          </li>
-          <li className="nav-item">
-            <a className="nav-link" href="#">
-              Pricing
-            </a>
-          </li>
-          <li className="nav-item">
-            <a className="nav-link" href="#">
-              About
-            </a>
-          </li>
+          {links.map((link, index) => (
+            <li className="nav-item" key={index}>
+              <NavLink
+                className={"nav-link"}
+                activeClassName="active"
+                exact
+                to={link}
+              >
+                {pages[index]}{" "}
+              </NavLink>
+            </li>
+          ))}
+        </ul>
+        <ul className="navbar-nav ml-auto">
+          {authTokens ? (
+            <li className="nav-item">
+              <a className={"nav-link"} href="/logout">
+                Log out
+              </a>
+            </li>
+          ) : (
+            <li className="nav-item">
+              <Link className={"nav-link"} to="/login">
+                Login
+              </Link>
+            </li>
+          )}
         </ul>
       </div>
     </nav>

@@ -29,7 +29,8 @@ class Users(APIView):
 
 
 class UserInfo(APIView):
-    def get(self, request, username):
+    def get(self, request):
+        username = request.user
         if not User.objects.filter(username=username).exists():
             raise NotFound(detail="Requested User not found.", code=404)
 

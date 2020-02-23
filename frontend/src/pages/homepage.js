@@ -1,34 +1,80 @@
 import React from "react";
 
 import { Layout } from "../components/layout";
-import { Navbar } from "../components/components";
 
-const curated = () => {
-  fetch("/users/all/").then(res => console.log(res));
-};
+import playlistsimg from "../images/playlists.jpg";
 
 const Homepage = props => {
-  curated();
-  return (
-    <Layout>
-      <Navbar />
-      <div className="jumbotron bg-dark">
-        <h1 className="display-3">Hello, world!</h1>
-        <p className="lead">
-          This is a simple hero unit, a simple jumbotron-style component for
-          calling extra attention to featured content or information.
-        </p>
-        <hr className="my-4" />
-        <p>
-          It uses utility classes for typography and spacing to space content
-          out within the larger container.
-        </p>
-        <div className="lead">
-          <div className="btn btn-primary btn-lg" role="button">
-            Learn more
+  const Header = () => (
+    <div className="jumbotron mb-0 text-primary">
+      <h1 className="display-3">Learn faster</h1>
+      <p className="lead w-75 mx-auto">
+        Our AI powered software allows you to learn Open Education Materials
+        with ease and connects with people with similar preferences
+      </p>
+      <hr className="my-4" />
+      <p>
+        Sample text Sample text Sample text Sample text Sample text Sample text
+      </p>
+      <div className="lead">
+        <div className="btn btn-success btn-lg" role="button">
+          Start learning
+        </div>
+      </div>
+    </div>
+  );
+
+  const Playlists = () => {
+    return (
+      <div className="container mb-5">
+        <img
+          src={playlistsimg}
+          alt="playlists"
+          width="50%"
+          style={{ maxWidth: "400px" }}
+        />
+        <h1 className="display-5">Playlists</h1>
+        <div className="row mt-3">
+          <div className="col">
+            <div className="card text-primary" style={{ width: "18rem" }}>
+              <div className="card-body">
+                <h5 className="card-title">Machine learning</h5>
+                <h6 className="card-subtitle mb-2 text-muted">views: 100</h6>
+                <p className="card-text">
+                  This is an introductory course to machine learning, which has
+                  specific best rated OERs.
+                </p>
+                <a href="#" className="card-link">
+                  View playlist
+                </a>
+                <a href="#" className="card-link">
+                  Read more
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       </div>
+    );
+  };
+  return (
+    <Layout>
+      <div
+        class="alert alert-warning alert-dismissible fade show mb-0"
+        role="alert"
+      >
+        The quiz is ready. Take the quiz
+        <button
+          type="button"
+          class="close"
+          data-dismiss="alert"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <Header />
+      <Playlists />
     </Layout>
   );
 };

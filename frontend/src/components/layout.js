@@ -10,6 +10,7 @@ export const TeacherLayout = props => {
   return (
     <div className="full-screen bg-blue text-center text-white">
       <div id="spacing-div" />
+
       {props.children}
     </div>
   );
