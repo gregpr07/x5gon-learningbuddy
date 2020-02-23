@@ -14,12 +14,16 @@ def return_topic_dificulty(material_id, n_topics = 10):
     data ='{ "resource_ids": ['+str(material_id)+'], "wikification_type": "SIMPLE"}'
 
     response = requests.post('http://wp3dev.x5gon.org/distance/wikifier/fetch', headers=headers, data=data)
-    concepts = json.loads(response.content.decode())['output'][0]['value']['concepts']
-    concepts_dificulties = {i['title']:i['cosine'] for i in concepts}
-    
-    
-    return {k: v for k, v in sorted(concepts_dificulties.items(), key=lambda item: item[1])[::-1][:n_topics]}
+    try:
+        concepts = json.loads(response.content.decode())['output'][0]['value']['concepts']
+        concepts_dificulties = {i['title']:i['cosine'] for i in concepts}
+        
+        return {k: v for k, v in sorted(concepts_dificulties.items(), key=lambda item: item[1])[::-1][:n_topics]}
 
+    except:
+        return response
+    
+    
 class TrueBuddy_learner:
     def __init__(self, starting_skill = 0, starting_var = (25/3), BETA = 25/6, inf = 1/1000):
         #starting skill is defenitly 0, starting var has to be determined
