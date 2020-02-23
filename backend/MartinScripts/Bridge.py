@@ -1,6 +1,7 @@
 import requests
 import re
-import Generate_questions
+import MartinScripts.Generate_questions as Generate_questions
+
 def return_question(material_id = 39435, n_questions = 5):
     PLATFORM_URL = "https://platform.x5gon.org/api/v1"
     get_specific_materials_endpoint = "/oer_materials/{}"

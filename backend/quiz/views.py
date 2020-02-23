@@ -8,6 +8,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login
 from django.http import HttpResponse
 from .models import *
+import MartinScripts.Bridge as Bridge
 
 
 class QuizInfo(APIView):
@@ -31,6 +32,14 @@ class QuizInfo(APIView):
                 } for question in QuizQuestion.objects.filter(quiz_id=quiz.id)
             ],
         })
+
+
+class QuizGenerate(APIView):
+    def get(self, request, resource_id):
+
+        print(Bridge.return_question(resource_id, 5))
+
+        return Response()
 
 
 class QuizStatistics(APIView):
