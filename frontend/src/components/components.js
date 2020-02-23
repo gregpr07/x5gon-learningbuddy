@@ -3,10 +3,10 @@ import { NavLink, Link } from "react-router-dom";
 import logo from "../images/x5buddy.png";
 
 export const Navbar = props => {
-  const [authTokens, setAuthTokens] = useState(localStorage.getItem("user"));
+  const [authTokens] = useState(localStorage.getItem("user"));
 
-  const pages = ["Home", "Search", "Playlists", "Social", "My profile"];
-  const links = ["/", "/search", "/playlists", "/social", "/profile"];
+  const pages = ["Home", "Playlists", "Search", "Social", "My profile"];
+  const links = ["/", "/playlists", "/search", "/social", "/profile"];
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
       <div className="navbar-brand">

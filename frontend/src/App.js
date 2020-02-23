@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import "./css/bootstrap.min.css";
 
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
@@ -11,6 +11,8 @@ import Logout from "./pages/logout";
 import Profile from "./pages/profile";
 
 import Signup from "./pages/signup";
+import Playlists from "./pages/playlists";
+import Search from "./pages/search";
 
 function App() {
   return (
@@ -23,6 +25,8 @@ function App() {
         <Route exact path="/logout" component={Logout} />
         <Route exact path="/signup" component={Signup} />
         <Route exact path="/profile" component={Profile} />
+        <Route exact path="/search" component={Search} />
+        <Route exact path="/playlists" component={Playlists} />
         <Route>
           <div className="container">page not found</div>
         </Route>

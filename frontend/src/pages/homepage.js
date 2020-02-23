@@ -1,5 +1,5 @@
 import React from "react";
-
+import { Link } from "react-router-dom";
 import { Layout } from "../components/layout";
 
 import playlistsimg from "../images/playlists.jpg";
@@ -44,12 +44,12 @@ const Homepage = props => {
                   This is an introductory course to machine learning, which has
                   specific best rated OERs.
                 </p>
-                <a href="#" className="card-link">
+                <Link to="/" className="card-link">
                   View playlist
-                </a>
-                <a href="#" className="card-link">
+                </Link>
+                <Link to="/" className="card-link">
                   Read more
-                </a>
+                </Link>
               </div>
             </div>
           </div>

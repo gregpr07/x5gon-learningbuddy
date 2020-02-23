@@ -29,7 +29,7 @@ const Login = () => {
     })
       .then(res => {
         if (res.status === 400) {
-          throw 400;
+          throw Error(400);
         }
         return res.json();
       })
