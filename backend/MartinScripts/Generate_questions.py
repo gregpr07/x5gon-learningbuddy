@@ -1,12 +1,11 @@
 #Adopted from KristiyanVachev/Question-Generation
 
-# Common imports
-import pandas as pd
-from IPython.display import Markdown, display, clear_output
-
-
 import _pickle as cPickle
 from pathlib import Path
+
+# Common imports
+import pandas as pd
+
 
 def dumpPickle(fileName, content):
     pickleFile = open(fileName, 'wb')
@@ -30,7 +29,7 @@ def pickleExists(fileName):
 
 # Feature generation
 import spacy
-from spacy import displacy
+
 nlp = spacy.load('en_core_web_sm')
 
 #Extract answers and the sentence they are in
@@ -178,7 +177,7 @@ def prepareDf(df):
 
 def predictWords(wordsDf, df):
     
-    predictorPickleName = 'data/pickles/nb-predictor.pkl'
+    predictorPickleName = 'MartinScripts/data/pickles/nb-predictor.pkl'
     predictor = loadPickle(predictorPickleName)
     
     y_pred = predictor.predict_proba(wordsDf)
@@ -241,12 +240,10 @@ def sortAnswers(qaPairs):
 
 
 # Generating distractors
-import gensim
-from gensim.test.utils import datapath, get_tmpfile
 from gensim.models import KeyedVectors
 
-glove_file = 'data/embeddings/glove.6B.300d.txt'
-tmp_file = 'data/embeddings/word2vec-glove.6B.300d.txt'
+glove_file = 'MartinScripts/data/embeddings/glove.6B.300d.txt'
+tmp_file = 'MartinScripts/data/embeddings/word2vec-glove.6B.300d.txt'
 
 from gensim.scripts.glove2word2vec import glove2word2vec
 glove2word2vec(glove_file, tmp_file)
