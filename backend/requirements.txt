@@ -21,7 +21,7 @@ django-filter==2.2.0
 django-rest-auth==0.9.5
 djangorestframework==3.11.0
 docutils==0.15.2
-en-core-web-sm==2.2.0
+#en-core-web-sm==2.2.0 # install separately
 entrypoints==0.3
 gensim==3.8.1
 idna==2.9
@@ -65,7 +65,7 @@ python-dateutil==2.8.1
 python-dotenv==0.11.0
 python3-openid==3.1.0
 pytz==2019.3
-pywin32==227
+#pywin32==227
 pywinpty==0.5.7
 pyzmq==18.1.1
 qtconsole==4.6.0
