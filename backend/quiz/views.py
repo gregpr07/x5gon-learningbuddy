@@ -36,10 +36,7 @@ class QuizInfo(APIView):
 
 class QuizGenerate(APIView):
     def get(self, request, resource_id):
-
-        print(Bridge.return_question(resource_id, 5))
-
-        return Response()
+        return Response(Bridge.return_question(resource_id, 5))
 
 
 class QuizStatistics(APIView):
