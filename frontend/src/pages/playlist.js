@@ -1,13 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Layout } from "../components/layout";
-import {
-  XYPlot,
-  XAxis,
-  YAxis,
-  HorizontalGridLines,
-  RadialChart
-} from "react-vis";
+import { RadialChart } from "react-vis";
 
 const Playlist = props => {
   const id = props.match.params.id;
@@ -74,7 +68,7 @@ const Playlist = props => {
           <div className="col">
             <RadialChart
               data={myData}
-              innerRadius={200}
+              innerRadius={"200px"}
               width={200}
               height={200}
             />
