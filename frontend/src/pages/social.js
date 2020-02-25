@@ -36,30 +36,56 @@ const Social = props => {
       </div>
   );
 
+  const Messages = () => (
+      <div>
+        <h4 className="display-6">Messages</h4>
+        <div className="card text-primary">
+          <div className="card-body">
+            <div className="card-text">
+                <p>Heeey Mike! Do you wanna study with me today at 6pm?</p>
+                <p><img src="https://avatars3.githubusercontent.com/u/29489921?s=400&v=4" className="img-fluid" width="24" /> Alice <small>(24/02/2020 4:36pm)</small></p>
+                <Link to="/playlist/1" className="card-link">
+                  Reply
+                </Link>
+            </div>
+          </div>
+        </div>
+      </div>
+  );
+
+  const Friend = (friend, index) => {
+    return (
+      <div className="card text-primary mt-2">
+          <div className="card-body">
+            <h5 className="card-text"><img src={friend.image_url} className="img-fluid" width="24" /> {friend.username}</h5>
+          </div>
+      </div>
+    );
+  };
+
+  const friends = [
+    {
+      username: "duppy_",
+      image_url: "https://avatars1.githubusercontent.com/u/6363106?s=460&v=4",
+    },
+    {
+      username: "Sam",
+      image_url: "https://avatars1.githubusercontent.com/u/5435082?s=400&v=4",
+    },
+    {
+      username: "Alice",
+      image_url: "https://avatars3.githubusercontent.com/u/29489921?s=400&v=4",
+    },
+    {
+      username: "Kathy142",
+      image_url: "https://avatars-04.gitter.im/group/iv/3/57542c58c43b8c60197724d9",
+    },
+  ];
+
   const Friends = () => (
       <div>
         <h4 className="display-6">Friends [16]</h4>
-        <div className="card text-primary">
-          <div className="card-body">
-            <h5 className="card-text"><img src="https://avatars1.githubusercontent.com/u/6363106?s=460&v=4" className="img-fluid" width="24" /> duppy_</h5>
-          </div>
-        </div>
-        <div className="card text-primary mt-2">
-          <div className="card-body">
-            <h5 className="card-text"><img src="https://avatars1.githubusercontent.com/u/5435082?s=400&v=4" className="img-fluid" width="24" /> Sam</h5>
-          </div>
-        </div>
-        <div className="card text-primary mt-2">
-          <div className="card-body">
-            <h5 className="card-text"><img src="https://avatars3.githubusercontent.com/u/29489921?s=400&v=4" className="img-fluid" width="24" /> Alice</h5>
-          </div>
-        </div>
-                  <div className="card text-primary mt-2">
-          <div className="card-body">
-            <h5 className="card-text"><img src="https://avatars-04.gitter.im/group/iv/3/57542c58c43b8c60197724d9" className="img-fluid" width="24" /> Kathy142</h5>
-          </div>
-        </div>
-          <div className="text-xs-center">
+          {friends.map((friend, index) => Friend(friend, index))}
         <ul className="pagination pagination-sm mt-2 justify-content-center">
           <li className="page-item disabled">
             <a className="page-link" href="#">«</a>
@@ -80,24 +106,6 @@ const Social = props => {
             <a className="page-link" href="#">»</a>
           </li>
         </ul>
-      </div>
-      </div>
-  );
-
-  const Messages = () => (
-      <div>
-        <h4 className="display-6">Messages</h4>
-        <div className="card text-primary">
-          <div className="card-body">
-            <div className="card-text">
-                <p>Heeey Mike! Do you wanna study with me today at 6pm?</p>
-                <p><img src="https://avatars3.githubusercontent.com/u/29489921?s=400&v=4" className="img-fluid" width="24" /> Alice <small>(24/02/2020 4:36pm)</small></p>
-                <Link to="/playlist/1" className="card-link">
-                  Reply
-                </Link>
-            </div>
-          </div>
-        </div>
       </div>
   );
 
