@@ -15,6 +15,7 @@ import Playlists from "./pages/playlists";
 import Search from "./pages/search";
 import Quiz from "./pages/quiz";
 import Playlist from "./pages/playlist";
+import Social from "./pages/social";
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
         <Route exact path="/signup" component={Signup} />
         <Route exact path="/profile" component={Profile} />
         <Route exact path="/search" component={Search} />
+        <Route exact path="/social" component={Social} />
         <Route exact path="/playlists" component={Playlists} />
         <Route exact path="/playlist/:id" component={Playlist} />
 
