@@ -6,7 +6,7 @@ const Social = props => {
   const Header = () => (
     <div className="jumbotron mb-0 text-primary">
       <h1 className="display-3">Social</h1>
-      <p className="lead w-75 mx-auto">Lorem ipsum dolor sit amet.</p>
+      <p className="lead w-75 mx-auto">Notifications, friends, messages & more!</p>
     </div>
   );
 
@@ -46,16 +46,21 @@ const Social = props => {
         </div>
         <div className="card text-primary mt-2">
           <div className="card-body">
-            <h5 className="card-text"><img src="https://avatars3.githubusercontent.com/u/29489921?s=400&v=4" className="img-fluid" width="24" /> Username</h5>
+            <h5 className="card-text"><img src="https://avatars1.githubusercontent.com/u/5435082?s=400&v=4" className="img-fluid" width="24" /> Sam</h5>
           </div>
         </div>
         <div className="card text-primary mt-2">
           <div className="card-body">
-            <h5 className="card-text"><img src="https://avatars3.githubusercontent.com/u/29489921?s=400&v=4" className="img-fluid" width="24" /> Username</h5>
+            <h5 className="card-text"><img src="https://avatars3.githubusercontent.com/u/29489921?s=400&v=4" className="img-fluid" width="24" /> Alice</h5>
           </div>
         </div>
-          <div className="text-lg-center">
-        <ul className="pagination pagination-sm mt-2">
+                  <div className="card text-primary mt-2">
+          <div className="card-body">
+            <h5 className="card-text"><img src="https://avatars-04.gitter.im/group/iv/3/57542c58c43b8c60197724d9" className="img-fluid" width="24" /> Kathy142</h5>
+          </div>
+        </div>
+          <div className="text-xs-center">
+        <ul className="pagination pagination-sm mt-2 justify-content-center">
           <li className="page-item disabled">
             <a className="page-link" href="#">«</a>
           </li>
@@ -84,9 +89,12 @@ const Social = props => {
         <h4 className="display-6">Messages</h4>
         <div className="card text-primary">
           <div className="card-body">
-            <h5 className="card-title">Notification title</h5>
             <div className="card-text">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                <p>Heeey Mike! Do you wanna study with me today at 6pm?</p>
+                <p><img src="https://avatars3.githubusercontent.com/u/29489921?s=400&v=4" className="img-fluid" width="24" /> Alice <small>(24/02/2020 4:36pm)</small></p>
+                <Link to="/playlist/1" className="card-link">
+                  Reply
+                </Link>
             </div>
           </div>
         </div>
