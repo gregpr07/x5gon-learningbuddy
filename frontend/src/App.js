@@ -34,7 +34,7 @@ function App() {
         <Route exact path="/playlists" component={Playlists} />
         <Route exact path="/playlist/:id" component={Playlist} />
 
-        <Route exact path="/quiz" component={Quiz} />
+        <Route exact path="/quiz/:id" component={Quiz} />
         <Route>
           <div className="container">page not found</div>
         </Route>

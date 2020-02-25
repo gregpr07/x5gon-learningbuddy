@@ -10,9 +10,9 @@ const Playlist = props => {
       <h1 className="display-3">Playlist {id}</h1>
       <p className="lead w-75 mx-auto">Playlist description</p>
       <div className="lead">
-        <div className="btn btn-success btn" role="button">
+        <Link to={"/quiz/" + id} className="btn btn-success btn" role="button">
           Take quiz
-        </div>
+        </Link>
       </div>
     </div>
   );

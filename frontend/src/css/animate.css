@@ -3573,28 +3573,28 @@
 }
 
 .animated.delay-1s {
+  -webkit-animation-delay: 0.1s;
+  animation-delay: 0.1s;
+}
+
+.animated.delay-2s {
   -webkit-animation-delay: 0.3s;
   animation-delay: 0.3s;
 }
 
-.animated.delay-2s {
+.animated.delay-3s {
+  -webkit-animation-delay: 0.5s;
+  animation-delay: 0.5s;
+}
+
+.animated.delay-4s {
   -webkit-animation-delay: 0.6s;
   animation-delay: 0.6s;
 }
 
-.animated.delay-3s {
-  -webkit-animation-delay: 0.8s;
-  animation-delay: 0.8s;
-}
-
-.animated.delay-4s {
-  -webkit-animation-delay: 1s;
-  animation-delay: 1s;
-}
-
 .animated.delay-5s {
-  -webkit-animation-delay: 5s;
-  animation-delay: 5s;
+  -webkit-animation-delay: 0.7s;
+  animation-delay: 0.7s;
 }
 
 .animated.fast {
