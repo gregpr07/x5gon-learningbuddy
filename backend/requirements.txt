@@ -1,3 +1,4 @@
+appnope==0.1.0
 asgiref==3.2.3
 attrs==19.3.0
 backcall==0.1.0
@@ -21,7 +22,7 @@ django-filter==2.2.0
 django-rest-auth==0.9.5
 djangorestframework==3.11.0
 docutils==0.15.2
-en-core-web-sm==2.2.0
+#en-core-web-sm==2.2.5 # install separately
 entrypoints==0.3
 gensim==3.8.1
 idna==2.9
@@ -53,11 +54,14 @@ oauthlib==3.1.0
 pandas==1.0.1
 pandocfilters==1.4.2
 parso==0.6.1
+pexpect==4.8.0
 pickleshare==0.7.5
 plac==1.1.3
 preshed==3.0.2
 prometheus-client==0.7.1
 prompt-toolkit==3.0.3
+psycopg2-binary==2.8.4
+ptyprocess==0.6.0
 Pygments==2.5.2
 pyparsing==2.4.6
 pyrsistent==0.15.7
@@ -65,7 +69,6 @@ python-dateutil==2.8.1
 python-dotenv==0.11.0
 python3-openid==3.1.0
 pytz==2019.3
-pywin32==227
 pywinpty==0.5.7
 pyzmq==18.1.1
 qtconsole==4.6.0

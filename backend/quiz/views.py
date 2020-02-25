@@ -85,7 +85,8 @@ class QuizResult(APIView):
 
         # Quiz & User exist, let's return the data.
         quiz = Quiz.objects.get(id=quiz_id)
-        results = QuizUserResult.objects.filter(quiz_id=quiz_id).filter(user_id=user_id).order_by("-date")[:self.RESULT_LIMIT]
+        results = QuizUserResult.objects.filter(quiz_id=quiz_id).filter(
+            user_id=user_id).order_by("-date")[:self.RESULT_LIMIT]
 
         return Response({
             'quiz_id': quiz.id,
@@ -116,7 +117,8 @@ class QuizLeaderboard(APIView):
 
         # Quiz & User exist, let's return the data.
         quiz = Quiz.objects.get(id=quiz_id)
-        results = QuizUserResult.objects.filter(quiz_id=quiz_id).order_by('-correct')[:self.LEADERBOARD_LIMIT]
+        results = QuizUserResult.objects.filter(
+            quiz_id=quiz_id).order_by('-correct')[:self.LEADERBOARD_LIMIT]
 
         return Response({
             'quiz_id': quiz.id,
