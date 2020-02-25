@@ -15,12 +15,12 @@ from .models import *
 
 
 class QuizInfo(APIView):
-    def get(self, request, quiz_id):
-        if not Quiz.objects.filter(id=quiz_id).exists():
+    def get(self, request, material_id):
+        if not Quiz.objects.filter(material_id=material_id).exists():
             raise NotFound(detail="Requested Quiz not found.", code=404)
 
         # Quiz exists, let's return the data.
-        quiz = Quiz.objects.get(id=quiz_id)
+        quiz = Quiz.objects.get(material_id=material_id)
 
         return Response({
             'quiz_id': quiz.pk,
@@ -69,12 +69,12 @@ def save_quiz_to_db(material_id):
 
 
 class QuizStats(APIView):
-    def get(self, request, quiz_id):
-        if not Quiz.objects.filter(id=quiz_id).exists():
+    def get(self, request, material_id):
+        if not Quiz.objects.filter(material_id=material_id).exists():
             raise NotFound(detail="Requested Quiz not found.", code=404)
 
         # Quiz exists, let's return the data.
-        quiz = Quiz.objects.get(id=quiz_id)
+        quiz = Quiz.objects.get(material_id=material_id)
         statistics = quiz.stats
 
         return Response({
@@ -105,16 +105,16 @@ class QuizResult(APIView):
     # ta stevlika predstavlja koliko zadnjih rezultatov uporabnika vrne
     RESULT_LIMIT = 10
 
-    def get(self, request, quiz_id, user_id):
-        if not Quiz.objects.filter(id=quiz_id).exists():
+    def get(self, request, material_id, user_id):
+        if not Quiz.objects.filter(material_id=material_id).exists():
             raise NotFound(detail="Requested Quiz not found.", code=404)
 
         if not User.objects.filter(id=user_id).exists():
             raise NotFound(detail="Requested User not found.", code=404)
 
         # Quiz & User exist, let's return the data.
-        quiz = Quiz.objects.get(id=quiz_id)
-        results = QuizUserResult.objects.filter(quiz_id=quiz_id).filter(
+        quiz = Quiz.objects.get(material_id=material_id)
+        results = QuizUserResult.objects.filter(material_id=material_id).filter(
             user_id=user_id).order_by("-date")[:self.RESULT_LIMIT]
 
         return Response({
@@ -140,14 +140,14 @@ class QuizLeaderboard(APIView):
     # ta stevlika predstavlja koliko najboljsih uporabnikov vrne
     LEADERBOARD_LIMIT = 10
 
-    def get(self, request, quiz_id):
-        if not Quiz.objects.filter(id=quiz_id).exists():
+    def get(self, request, material_id):
+        if not Quiz.objects.filter(material_id=material_id).exists():
             raise NotFound(detail="Requested Quiz not found.", code=404)
 
         # Quiz & User exist, let's return the data.
-        quiz = Quiz.objects.get(id=quiz_id)
+        quiz = Quiz.objects.get(material_id=material_id)
         results = QuizUserResult.objects.filter(
-            quiz_id=quiz_id).order_by('-correct')[:self.LEADERBOARD_LIMIT]
+            quiz__material_id=material_id).order_by('-correct')[:self.LEADERBOARD_LIMIT]
 
         return Response({
             'quiz_id': quiz.id,
