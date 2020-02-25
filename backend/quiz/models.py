@@ -46,7 +46,7 @@ class Quiz(models.Model):
 
 class QuizQuestion(models.Model):
     quiz = models.ForeignKey(Quiz, on_delete=models.CASCADE)
-    text = models.CharField(max_length=255)
+    text = models.TextField(max_length=750)
     correct = models.IntegerField(default=0)
 
     def get_quiz_answers(self):
