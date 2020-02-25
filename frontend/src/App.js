@@ -13,6 +13,7 @@ import Profile from "./pages/profile";
 import Signup from "./pages/signup";
 import Playlists from "./pages/playlists";
 import Search from "./pages/search";
+import Quiz from "./pages/quiz";
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
         <Route exact path="/profile" component={Profile} />
         <Route exact path="/search" component={Search} />
         <Route exact path="/playlists" component={Playlists} />
+        <Route exact path="/quiz" component={Quiz} />
         <Route>
           <div className="container">page not found</div>
         </Route>

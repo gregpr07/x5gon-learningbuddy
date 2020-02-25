@@ -2,9 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Layout } from "../components/layout";
 
-import playlistsimg from "../images/playlists.jpg";
-
-const Homepage = props => {
+const Quiz = props => {
   const Header = () => (
     <div className="jumbotron mb-0 text-primary">
       <h1 className="display-3">Learn faster</h1>
@@ -24,59 +22,65 @@ const Homepage = props => {
     </div>
   );
 
-  const Playlists = () => {
-    return (
-      <div className="container mb-5">
-        <img
-          src={playlistsimg}
-          alt="playlists"
-          width="50%"
-          style={{ maxWidth: "400px" }}
-        />
-        <h1 className="display-5">Playlists</h1>
-        <div className="row mt-3">
-          <div className="col">
-            <div className="card text-primary" style={{ width: "18rem" }}>
-              <div className="card-body">
-                <h5 className="card-title">Machine learning</h5>
-                <h6 className="card-subtitle mb-2 text-muted">views: 100</h6>
-                <p className="card-text">
-                  This is an introductory course to machine learning, which has
-                  specific best rated OERs.
-                </p>
-                <Link to="/" className="card-link">
-                  View playlist
-                </Link>
-                <Link to="/" className="card-link">
-                  Read more
-                </Link>
+  const Questions = () => (
+      <div className="card text-primary text-left">
+        <div className="card-body">
+          <h2 className="card-title">Quiz &gt; Computing for Biomedical Scientists</h2>
+          <div className="card-text">
+            <p>Test your knowledge to see how much you've remembered.</p>
+            <form action="" method="post" noValidate>
+              <input type="hidden" name="csrfmiddlewaretoken" defaultValue="cYrK7OKYkwfjcXuRWusPMF4t1i1K1Xi3nWVUUYBLI73ZX95QUcgztgY1UL4TFog0" />
+              <hr />
+              <h4 className="card-title">1. What are the advantages of OOP?</h4>
+              <div className="custom-control custom-radio">
+                <input type="radio" className="custom-control-input" id="1-1" name="1-1" />
+                <label className="custom-control-label" htmlFor="1-1">Encapsulation, polymorphism, inheritance</label>
               </div>
-            </div>
+              <div className="custom-control custom-radio">
+                <input type="radio" className="custom-control-input" id="1-2" name="1-2" />
+                <label className="custom-control-label" htmlFor="1-2">Static code</label>
+              </div>
+              <div className="custom-control custom-radio">
+                <input type="radio" className="custom-control-input" id="1-3" name="1-3" />
+                <label className="custom-control-label" htmlFor="1-3">Only encapsulation</label>
+              </div>
+              <hr />
+              <h4 className="card-title">2. What is OOP?</h4>
+              <div className="custom-control custom-radio">
+                <input type="radio" className="custom-control-input" id="2-1" name="2-1" />
+                <label className="custom-control-label" htmlFor="2-1">Computer programming is the process of designing and building an executable computer program for accomplishing a specific computing result.</label>
+              </div>
+              <div className="custom-control custom-radio">
+                <input type="radio" className="custom-control-input" id="2-2" name="2-2" />
+                <label className="custom-control-label" htmlFor="2-2">Object-oriented programming (OOP) is a way of writing computer programs which is using the idea of "objects" to represent data and methods.</label>
+              </div>
+              <hr />
+              <h4 className="card-title">3. Encapsulation is...</h4>
+              <div className="custom-control custom-radio">
+                <input type="radio" className="custom-control-input" id="3-1" name="3-1" />
+                <label className="custom-control-label" htmlFor="3-1">method overloading</label>
+              </div>
+              <div className="custom-control custom-radio">
+                <input type="radio" className="custom-control-input" id="3-2" name="3-2" />
+                <label className="custom-control-label" htmlFor="3-2">information hiding</label>
+              </div>
+              <div className="custom-control custom-radio">
+                <input type="radio" className="custom-control-input" id="3-3" name="3-3" />
+                <label className="custom-control-label" htmlFor="3-3">overlapping</label>
+              </div>
+              <hr />
+              <button type="submit" className="btn btn-primary">Submit</button>
+            </form>
           </div>
         </div>
       </div>
-    );
-  };
+  );
+
   return (
     <Layout>
-      <div
-        class="alert alert-warning alert-dismissible fade show mb-0"
-        role="alert"
-      >
-        The quiz is ready. Take the quiz
-        <button
-          type="button"
-          class="close"
-          data-dismiss="alert"
-          aria-label="Close"
-        >
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <Header />
-      <Playlists />
+        <Questions />
     </Layout>
   );
 };
 
-export default Homepage;
+export default Quiz;
