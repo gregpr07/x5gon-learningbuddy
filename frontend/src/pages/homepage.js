@@ -7,7 +7,7 @@ import playlistsimg from "../images/playlists.jpg";
 const Homepage = props => {
   const Header = () => (
     <div className="jumbotron mb-0 text-primary">
-      <h1 className="display-3">Learn faster</h1>
+      <h1 className="display-3">Connect with others</h1>
       <p className="lead w-75 mx-auto">
         Our AI powered software allows you to learn Open Education Materials
         with ease and connects with people with similar preferences
@@ -59,20 +59,6 @@ const Homepage = props => {
   };
   return (
     <Layout>
-      <div
-        class="alert alert-warning alert-dismissible fade show mb-0"
-        role="alert"
-      >
-        The quiz is ready. Take the quiz
-        <button
-          type="button"
-          class="close"
-          data-dismiss="alert"
-          aria-label="Close"
-        >
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
       <Header />
       <Playlists />
     </Layout>

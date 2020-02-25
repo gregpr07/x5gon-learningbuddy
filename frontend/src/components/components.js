@@ -28,7 +28,7 @@ export const Navbar = props => {
           {links.map((link, index) => (
             <li className="nav-item" key={index}>
               <NavLink
-                className={"nav-link"}
+                className={`nav-link fadeIn animated delay-${index}s`}
                 activeClassName="active"
                 exact
                 to={link}
