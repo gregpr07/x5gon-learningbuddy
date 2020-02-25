@@ -15,9 +15,21 @@ const Social = props => {
         <h4 className="display-6">Notifications</h4>
         <div className="card text-primary">
           <div className="card-body">
-            <h5 className="card-title">Notification title <button type="button" className="close" aria-label="Close"><span aria-hidden="true">&times;</span></button></h5>
+            <h5 className="card-title">Challenge <button type="button" className="close" aria-label="Close"><span aria-hidden="true">&times;</span></button></h5>
             <div className="card-text">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                <img src="https://avatars3.githubusercontent.com/u/29489921?s=400&v=4" className="img-fluid" width="24" /> Mike14 just challenged you in Machine Learning Playlist.
+                <br/>
+                <small className="text-left">(25/02/2020 6:04pm)</small>
+            </div>
+          </div>
+        </div>
+          <div className="card text-primary mt-2">
+          <div className="card-body">
+            <h5 className="card-title">Like <button type="button" className="close" aria-label="Close"><span aria-hidden="true">&times;</span></button></h5>
+            <div className="card-text">
+                <img src="https://avatars0.githubusercontent.com/u/32172990?s=400&v=4" className="img-fluid" width="24" /> Jessica liked your playlist.
+                <br/>
+                <small className="text-left">(24/02/2020 4:36pm)</small>
             </div>
           </div>
         </div>
@@ -26,12 +38,44 @@ const Social = props => {
 
   const Friends = () => (
       <div>
-        <h4 className="display-6">Friends</h4>
+        <h4 className="display-6">Friends [16]</h4>
         <div className="card text-primary">
           <div className="card-body">
-            <h5 className="card-title">Username</h5>
+            <h5 className="card-text"><img src="https://avatars1.githubusercontent.com/u/6363106?s=460&v=4" className="img-fluid" width="24" /> duppy_</h5>
           </div>
         </div>
+        <div className="card text-primary mt-2">
+          <div className="card-body">
+            <h5 className="card-text"><img src="https://avatars3.githubusercontent.com/u/29489921?s=400&v=4" className="img-fluid" width="24" /> Username</h5>
+          </div>
+        </div>
+        <div className="card text-primary mt-2">
+          <div className="card-body">
+            <h5 className="card-text"><img src="https://avatars3.githubusercontent.com/u/29489921?s=400&v=4" className="img-fluid" width="24" /> Username</h5>
+          </div>
+        </div>
+          <div className="text-lg-center">
+        <ul className="pagination pagination-sm mt-2">
+          <li className="page-item disabled">
+            <a className="page-link" href="#">«</a>
+          </li>
+          <li className="page-item active">
+            <a className="page-link" href="#">1</a>
+          </li>
+          <li className="page-item">
+            <a className="page-link" href="#">2</a>
+          </li>
+          <li className="page-item">
+            <a className="page-link" href="#">3</a>
+          </li>
+          <li className="page-item">
+            <a className="page-link" href="#">4</a>
+          </li>
+          <li className="page-item">
+            <a className="page-link" href="#">»</a>
+          </li>
+        </ul>
+      </div>
       </div>
   );
 
