@@ -6,7 +6,7 @@ const Playlists = props => {
   const Header = () => (
     <div className="jumbotron mb-0 text-primary">
       <h1 className="display-3">Playlists</h1>
-      <p className="lead w-75 mx-auto">Personnalized playlists </p>
+      <p className="lead w-75 mx-auto">Personalized playlists </p>
     </div>
   );
 
