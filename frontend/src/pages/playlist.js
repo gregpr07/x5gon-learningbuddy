@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Layout } from "../components/layout";
-import { RadialChart } from "react-vis";
+import { PieChart, Pie, Sector, Cell } from "recharts";
 
 const Playlist = props => {
   const id = props.match.params.id;
@@ -58,20 +58,70 @@ const Playlist = props => {
     }
   ];
   const Data = () => {
-    const myData = [{ angle: 1 }, { angle: 5 }];
+    const data = [
+      {
+        name: "Group A",
+        value: 60,
+        label: "Completed"
+      },
+      {
+        name: "Group B",
+        value: 40
+      }
+    ];
+    const COLORS = ["#0088FE", "#00C49F"];
     return (
-      <div className="container py-4">
+      <div className="container py-4 text-primary">
         <div className="row">
           <div className="col-md-4">
             {materials.map((mat, index) => Material(mat, index))}
           </div>
-          <div className="col">
-            <RadialChart
-              data={myData}
-              innerRadius={"200px"}
-              width={200}
-              height={200}
-            />
+          <div className="col-6">
+            <div>
+              <p className="p-0">Completed 60% of course</p>
+              <PieChart width={160} height={160} className="mx-auto">
+                <Pie
+                  data={data}
+                  dataKey="value"
+                  nameKey="name"
+                  cx="50%"
+                  cy="50%"
+                  innerRadius={60}
+                  outerRadius={80}
+                >
+                  {" "}
+                  {data.map((entry, index) => (
+                    <Cell fill={COLORS[index % COLORS.length]} />
+                  ))}
+                </Pie>
+              </PieChart>
+            </div>
+            <div className="row mt-5">
+              <div className="col-6">
+                <ul class="list-group">
+                  <h6 className="text-danger" style={{ height: "30px" }}>
+                    People with similar preferences
+                  </h6>
+                  <li class="list-group-item">Cras justo odio</li>
+                  <li class="list-group-item">Dapibus ac facilisis in</li>
+                  <li class="list-group-item">Morbi leo risus</li>
+                  <li class="list-group-item">Porta ac consectetur ac</li>
+                  <li class="list-group-item">Vestibulum at eros</li>
+                </ul>
+              </div>
+              <div className="col-6">
+                <ul class="list-group">
+                  <h6 className="text-danger" style={{ height: "30px" }}>
+                    Scoreboard
+                  </h6>
+                  <li class="list-group-item">Cras justo odio</li>
+                  <li class="list-group-item">Dapibus ac facilisis in</li>
+                  <li class="list-group-item">Morbi leo risus</li>
+                  <li class="list-group-item">Porta ac consectetur ac</li>
+                  <li class="list-group-item">Vestibulum at eros</li>
+                </ul>
+              </div>
+            </div>
           </div>
         </div>
       </div>
