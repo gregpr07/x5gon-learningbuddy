@@ -285,11 +285,18 @@ class Search extends React.Component {
   );
 
   // OTHER
+  Header = () => (
+    <div className="jumbotron mb-0 text-primary">
+      <h1 className="display-3">Search</h1>
+      <p className="lead w-75 mx-auto">What would you like to learn next? </p>
+    </div>
+  );
 
   // RENDER VIEW
   render() {
     return (
       <Layout>
+        <this.Header/>
         <div className="text-primary container">
           <this.SearchDIV />
           {this.state.loading ? <this.LoadingIcon /> : null}
