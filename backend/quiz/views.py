@@ -38,27 +38,33 @@ class QuizInfo(APIView):
 
 
 def get_generate_json(material_id):
-    return Response(json.loads(requests.get(
+    return json.loads(requests.get(
         url="http://" + os.getenv('MSCRIPTS_HOST') + ":" + os.getenv('MSCRIPTS_PORT') + "/quiz/generate/" + str(
-            material_id) + "/").content))
+            material_id) + "/").content)
 
 
 class QuizGenerate(APIView):
     def get(self, request, material_id):
-        return get_generate_json(material_id)
+        if Quiz.objects.filter(material_id=material_id).exists():
+            raise NotFound(detail="Requested Quiz has already been generated.", code=404)
+        else:
+            save_quiz_to_db(material_id)
+            return Response()
 
 
 def save_quiz_to_db(material_id):
-    generated_json = get_generate_json(material_id)
+    generated_json = list(get_generate_json(material_id))
 
     stats = QuizStatistics.objects.create()
     quiz = Quiz.objects.create(material_id=material_id, stats=stats)
+
+    print(generated_json)
 
     for json_question in generated_json:
         # for now every first answer is correct
         question = QuizQuestion.objects.create(quiz=quiz, text=json_question['question'], correct=0)
         correct = QuizAnswer.objects.create(question=question, text=json_question['answer'])
-        for json_answer in generated_json['distractors']:
+        for json_answer in json_question['distractors']:
             QuizAnswer.objects.create(question=question, text=json_answer)
 
 
