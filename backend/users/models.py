@@ -8,8 +8,7 @@ class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     description = models.TextField(
         max_length=300, default="Another cool user.")
-    # to je unnecessary ker tak User model hold-a creation date
-    # date_created = models.DateTimeField(default=timezone.now, blank=True)
+    proffesional = models.BooleanField(default=False)
 
     def __str__(self):
         return self.user.username + "'s profile"

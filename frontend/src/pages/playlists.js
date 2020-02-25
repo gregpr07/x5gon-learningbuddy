@@ -24,10 +24,13 @@ const Playlists = props => {
                   This is an introductory course to machine learning, which has
                   specific best rated OERs.
                 </p>
-                <Link to="/" className="card-link">
+                <p>
+                  Created by: <strong>JohnL</strong>
+                </p>
+                <Link to="/playlist/1" className="card-link">
                   View playlist
                 </Link>
-                <Link to="/" className="card-link">
+                <Link to="/playlist/1" className="card-link">
                   Read more
                 </Link>
               </div>
@@ -41,7 +44,7 @@ const Playlists = props => {
   const Playlists = () => {
     return (
       <div className="pt-3">
-        {Playlistsrow("For you")}
+        {Playlistsrow("Professionally created")}
         {Playlistsrow("Most popular")}
         {Playlistsrow("Top rated")}
       </div>
