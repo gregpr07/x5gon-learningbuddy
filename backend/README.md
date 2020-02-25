@@ -10,6 +10,8 @@ DATABASE_USER = <user>
 DATABASE_PASSWORD = <password>
 DATABASE_PORT = <port>
 DATABASE_HOST = <host>
+MSCRIPTS_PORT = <mscripts_port>
+MSCRIPTS_HOST = <mscripts_host>
 ```
 
 Then `pip install -r requirements.txt` (preferably in virtual env)

@@ -1,4 +1,8 @@
 # not all imports are neccessary yet
+import json
+import os
+
+import requests
 from rest_framework.exceptions import NotFound
 from rest_framework.views import APIView
 from rest_framework import generics
@@ -8,7 +12,6 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login
 from django.http import HttpResponse
 from .models import *
-import MartinScripts.Bridge as Bridge
 
 
 class QuizInfo(APIView):
@@ -34,12 +37,32 @@ class QuizInfo(APIView):
         })
 
 
+def get_generate_json(material_id):
+    return Response(json.loads(requests.get(
+        url="http://" + os.getenv('MSCRIPTS_HOST') + ":" + os.getenv('MSCRIPTS_PORT') + "/quiz/generate/" + str(
+            material_id) + "/").content))
+
+
 class QuizGenerate(APIView):
-    def get(self, request, resource_id):
-        return Response(Bridge.return_question(resource_id, 5))
+    def get(self, request, material_id):
+        return get_generate_json(material_id)
 
 
-class QuizStatistics(APIView):
+def save_quiz_to_db(material_id):
+    generated_json = get_generate_json(material_id)
+
+    stats = QuizStatistics.objects.create()
+    quiz = Quiz.objects.create(material_id=material_id, stats=stats)
+
+    for json_question in generated_json:
+        # for now every first answer is correct
+        question = QuizQuestion.objects.create(quiz=quiz, text=json_question['question'], correct=0)
+        correct = QuizAnswer.objects.create(question=question, text=json_question['answer'])
+        for json_answer in generated_json['distractors']:
+            QuizAnswer.objects.create(question=question, text=json_answer)
+
+
+class QuizStats(APIView):
     def get(self, request, quiz_id):
         if not Quiz.objects.filter(id=quiz_id).exists():
             raise NotFound(detail="Requested Quiz not found.", code=404)
