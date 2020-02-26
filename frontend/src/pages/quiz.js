@@ -19,13 +19,11 @@ const Quiz = props => {
       </h2>
       <div className="card-text">
         <form action="" method="post" noValidate>
-          <input
-            type="hidden"
-            name="csrfmiddlewaretoken"
-            defaultValue="cYrK7OKYkwfjcXuRWusPMF4t1i1K1Xi3nWVUUYBLI73ZX95QUcgztgY1UL4TFog0"
-          />
           <hr />
-          <h4 className="card-title">1. What are the advantages of OOP?</h4>
+          <h4 className="card-title">
+            1. Professor Bloom continues the _____ of emotions as useful
+            evolutionary adaptations for dealing with our social environment.
+          </h4>
           <div className="custom-control custom-radio">
             <input
               type="radio"
@@ -34,7 +32,7 @@ const Quiz = props => {
               name="1-1"
             />
             <label className="custom-control-label" htmlFor="1-1">
-              Encapsulation, polymorphism, inheritance
+              discussion
             </label>
           </div>
           <div className="custom-control custom-radio">
@@ -45,7 +43,7 @@ const Quiz = props => {
               name="1-2"
             />
             <label className="custom-control-label" htmlFor="1-2">
-              Static code
+              debate
             </label>
           </div>
           <div className="custom-control custom-radio">
@@ -56,11 +54,14 @@ const Quiz = props => {
               name="1-3"
             />
             <label className="custom-control-label" htmlFor="1-3">
-              Only encapsulation
+              topic
             </label>
           </div>
           <hr />
-          <h4 className="card-title">2. What is OOP?</h4>
+          <h4 className="card-title">
+            2. In this talk, Konolige highlights the _____ rolesplayed by visual
+            registration.
+          </h4>
           <div className="custom-control custom-radio">
             <input
               type="radio"
@@ -69,9 +70,7 @@ const Quiz = props => {
               name="2-1"
             />
             <label className="custom-control-label" htmlFor="2-1">
-              Computer programming is the process of designing and building an
-              executable computer program for accomplishing a specific computing
-              result.
+              crucial
             </label>
           </div>
           <div className="custom-control custom-radio">
@@ -82,13 +81,14 @@ const Quiz = props => {
               name="2-2"
             />
             <label className="custom-control-label" htmlFor="2-2">
-              Object-oriented programming (OOP) is a way of writing computer
-              programs which is using the idea of "objects" to represent data
-              and methods.
+              key
             </label>
           </div>
           <hr />
-          <h4 className="card-title">3. Encapsulation is...</h4>
+          <h4 className="card-title">
+            3. In this talk, Konolige highlights the key rolesplayed by _____
+            registration.
+          </h4>
           <div className="custom-control custom-radio">
             <input
               type="radio"
@@ -97,7 +97,7 @@ const Quiz = props => {
               name="3-1"
             />
             <label className="custom-control-label" htmlFor="3-1">
-              method overloading
+              visual
             </label>
           </div>
           <div className="custom-control custom-radio">
@@ -119,11 +119,15 @@ const Quiz = props => {
               name="3-3"
             />
             <label className="custom-control-label" htmlFor="3-3">
-              overlapping
+              auroral
             </label>
           </div>
           <hr />
-          <button type="submit" className="btn btn-primary">
+          <button
+            type="submit"
+            onClick={e => e.preventDefault()}
+            className="btn btn-primary"
+          >
             Submit
           </button>
         </form>
