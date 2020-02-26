@@ -9,9 +9,7 @@ import transimg from "../images/transparency.png";
 const Homepage = props => {
   const Header = () => (
     <div className="jumbotron mb-0 text-primary">
-      <h1 className="display-4 w-75 mx-auto">
-        Building educational communities
-      </h1>
+      <h1 className="display-4 w-75 mx-auto">Grow educational communities</h1>
       <p className="lead w-75 mx-auto">
         Match students according to their interests and skill{" "}
       </p>
