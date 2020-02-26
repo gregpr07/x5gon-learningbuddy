@@ -20,7 +20,10 @@ const Quiz = props => {
       <div className="card-text">
         <form action="" method="post" noValidate>
           <hr />
-          <h4 className="card-title">1. Professor Bloom continues the _____ of emotions as useful evolutionary adaptations for dealing with our social environment.</h4>
+          <h4 className="card-title">
+            1. Professor Bloom continues the _____ of emotions as useful
+            evolutionary adaptations for dealing with our social environment.
+          </h4>
           <div className="custom-control custom-radio">
             <input
               type="radio"
@@ -55,7 +58,10 @@ const Quiz = props => {
             </label>
           </div>
           <hr />
-          <h4 className="card-title">2. In this talk, Konolige highlights the _____ rolesplayed by visual registration.</h4>
+          <h4 className="card-title">
+            2. In this talk, Konolige highlights the _____ rolesplayed by visual
+            registration.
+          </h4>
           <div className="custom-control custom-radio">
             <input
               type="radio"
@@ -79,7 +85,10 @@ const Quiz = props => {
             </label>
           </div>
           <hr />
-          <h4 className="card-title">3. In this talk, Konolige highlights the key rolesplayed by _____ registration.</h4>
+          <h4 className="card-title">
+            3. In this talk, Konolige highlights the key rolesplayed by _____
+            registration.
+          </h4>
           <div className="custom-control custom-radio">
             <input
               type="radio"
@@ -114,7 +123,11 @@ const Quiz = props => {
             </label>
           </div>
           <hr />
-          <button type="submit" className="btn btn-primary">
+          <button
+            type="submit"
+            onClick={e => e.preventDefault()}
+            className="btn btn-primary"
+          >
             Submit
           </button>
         </form>

@@ -13,7 +13,7 @@ const Homepage = props => {
         Building educational communities
       </h1>
       <p className="lead w-75 mx-auto">
-        Match student according to their interests and skill{" "}
+        Match students according to their interests and skill{" "}
       </p>
     </div>
   );
@@ -86,7 +86,7 @@ const Homepage = props => {
   );
 
   const P3 = () => (
-    <div className="container mt-5">
+    <div className="container mt-5 mb-4">
       <div>
         <h3>Transparency</h3>
         <div className="mt-4">
