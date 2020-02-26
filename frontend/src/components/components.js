@@ -5,8 +5,8 @@ import logo from "../images/x5buddy.png";
 export const Navbar = props => {
   const [authTokens] = useState(localStorage.getItem("user"));
 
-  const pages = ["Home", "Playlists", "Search", "Social", "My profile"];
-  const links = ["/", "/playlists", "/search", "/social", "/profile"];
+  const pages = ["Home", "Playlists", "Social", "Search", "My profile"];
+  const links = ["/", "/playlists", "/social", "/search", "/profile"];
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
       <div className="navbar-brand">
