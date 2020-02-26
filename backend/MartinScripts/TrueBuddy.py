@@ -5,6 +5,9 @@ import numpy as np
 import json
 import requests
 
+normalizer = 0.5
+
+
 def return_topic_dificulty(material_id, n_topics = 10):
     headers = {
     'accept': 'application/json',
@@ -22,7 +25,15 @@ def return_topic_dificulty(material_id, n_topics = 10):
 
     except:
         return response
+
     
+def compare_students_on_playlist(student1, student2, playlist):
+    score1 = 0
+    score2 = 0
+    for i in playlist:
+        score1 = score1 + student1.predict_proba(i)
+        score2 = score2 + student2.predict_proba(i)
+    return score1 - score2
     
 class TrueBuddy_learner:
     def __init__(self, starting_skill = 0, starting_var = (25/3), BETA = 25/6, inf = 1/1000):
@@ -33,6 +44,9 @@ class TrueBuddy_learner:
         self.learners = {}
         self.inf = inf
         
+    
+    def compare_score(self, student):
+        return self.win_probability([v for v in self.learners.values()],[v for v in student.learners.values()])
     
     
     def update_skills(self, material_id, feedback):
