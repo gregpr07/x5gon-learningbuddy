@@ -7,6 +7,7 @@ import requests
 
 normalizer = 0.5
 
+
 def return_topic_dificulty(material_id, n_topics = 10):
     headers = {
     'accept': 'application/json',
