@@ -11,7 +11,7 @@ const Playlist = props => {
       <p className="lead w-75 mx-auto">Playlist description</p>
       <div className="lead">
         <Link to={"/quiz/" + id} className="btn btn-success btn" role="button">
-          Take quiz
+          Take the quiz
         </Link>
       </div>
     </div>
@@ -99,26 +99,26 @@ const Playlist = props => {
             <div className="row mt-5">
               <div className="col-6">
                 <ul class="list-group">
-                  <h6 className="text-danger" style={{ height: "30px" }}>
+                  <h6 style={{ height: "30px" }}>
                     People with similar preferences
                   </h6>
-                  <li class="list-group-item">Cras justo odio</li>
-                  <li class="list-group-item">Dapibus ac facilisis in</li>
-                  <li class="list-group-item">Morbi leo risus</li>
-                  <li class="list-group-item">Porta ac consectetur ac</li>
-                  <li class="list-group-item">Vestibulum at eros</li>
+                  <li className="list-group-item"><img src="https://avatars1.githubusercontent.com/u/6363106?s=460&v=4" className="img-fluid" width="24" /> Peter</li>
+                  <li className="list-group-item"><img src="https://camo.githubusercontent.com/8234a16941f0d9bd25ad5882e0e7d0f643331983/68747470733a2f2f7261772e6769746875622e636f6d2f736568726775742f6e6f64652d7265747269636f6e2f6d61737465722f6578616d706c65732f696d616765732f6769746875622e706e67" className="img-fluid" width="24"/> Mike</li>
+                  <li className="list-group-item"><img src="https://avatars1.githubusercontent.com/u/6363106?s=460&v=4" className="img-fluid" width="24"/> Sally</li>
+                  <li className="list-group-item"><img src="https://avatars1.githubusercontent.com/u/6363106?s=460&v=4" className="img-fluid" width="24"/> Monica</li>
+                  <li className="list-group-item"><img src="https://identicons.github.com/jasonlong.png" className="img-fluid" width="24"/> Anna</li>
                 </ul>
               </div>
               <div className="col-6">
                 <ul class="list-group">
-                  <h6 className="text-danger" style={{ height: "30px" }}>
+                  <h6 style={{ height: "30px" }}>
                     Scoreboard
                   </h6>
-                  <li class="list-group-item">Cras justo odio</li>
-                  <li class="list-group-item">Dapibus ac facilisis in</li>
-                  <li class="list-group-item">Morbi leo risus</li>
-                  <li class="list-group-item">Porta ac consectetur ac</li>
-                  <li class="list-group-item">Vestibulum at eros</li>
+                  <li className="list-group-item"><img src="https://camo.githubusercontent.com/8234a16941f0d9bd25ad5882e0e7d0f643331983/68747470733a2f2f7261772e6769746875622e636f6d2f736568726775742f6e6f64652d7265747269636f6e2f6d61737465722f6578616d706c65732f696d616765732f6769746875622e706e67" className="img-fluid" width="24" /> Mike</li>
+                  <li className="list-group-item"><img src="https://identicons.github.com/jasonlong.png" className="img-fluid" width="24"/> Anna</li>
+                  <li className="list-group-item"><img src="https://avatars1.githubusercontent.com/u/6363106?s=460&v=4" className="img-fluid" width="24"/> Taylor</li>
+                  <li className="list-group-item"><img src="https://avatars1.githubusercontent.com/u/6363106?s=460&v=4" className="img-fluid" width="24"/> Otto</li>
+                  <li className="list-group-item"><img src="https://avatars1.githubusercontent.com/u/6363106?s=460&v=4" className="img-fluid" width="24"/> Smith</li>
                 </ul>
               </div>
             </div>
