@@ -13,6 +13,10 @@ class Profile(models.Model):
     def __str__(self):
         return self.user.username + "'s profile"
 
+    #! json field
+
+# ? class UserPlayistProgress
+
 
 class ProfileStatistics(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
